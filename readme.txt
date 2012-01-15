@@ -3,5 +3,9 @@
 
  generative stuff
 
- using "4444" by dan stowell
+
+
+ --------------------------------------
+
+ this uses "4444" script by dan stowell
 
