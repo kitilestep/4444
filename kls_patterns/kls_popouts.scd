@@ -30,7 +30,9 @@
 	[0.2, 0.8], 3)
 }, 4, makebuild: nil);
 ~a4444[\d][\popout][\onprob] = { |curebbs| if(curebbs[\density] > 0.65){1}{0.01} * curebbs[\arousal].linlin(0.5,0.85, 0, 0.99) };
-//~a4444[\d][\popout][\onprob] = 1;
+/*
+~a4444[\d][\popout][\onprob] = 1;
+*/
 ~a4444[\d][\popout][\maypull] = false;
 );
 
