@@ -367,13 +367,15 @@ SynthDef(\eko4444, { |out=0, gate=1, dur=1|
 			~a4444[\stemrecsynth] = {
 				DiskOut.ar(~a4444[\stemrecbuf], stembusses.collect{|abus| In.ar(abus, 2) }.flat);
 				Out.ar(0, DC.ar(0));//silent
-			}.play(~a4444[\outmixgroup]);
+			}.play(~a4444[\outmixgroup], addAction: \addAfter);
 		}.play;
 	};
 
 	// The thing that mixes the tracks together into a stereo result
-	~a4444[\outmixproxy] = NodeProxy(Server.default, \audio, 2).play;
-	~a4444[\outmixproxy].group = ~a4444[\outmixgroup];
+	~a4444[\outmixproxy] = NodeProxy(Server.default, \audio, 2).play(group: ~a4444[\outmixgroup], addAction: \addToHead);
+	{
+		~a4444[\outmixproxy].group.moveToHead(~a4444[\outmixgroup]);
+	}.defer(0.2);
 
 	~setupmixer4444.value;
 
