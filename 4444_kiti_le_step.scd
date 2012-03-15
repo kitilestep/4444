@@ -3,7 +3,7 @@
 // Start the server
 s.latency_(0.4); s.options.memSize = 8192 * 4; s.boot;
 // Load the scripts (CHANGE THIS PATH TO wherever yours are)
-Document.dir = "~/dev/4444kls".standardizePath;
+Document.dir = Document.current.dir ? "~/dev/4444kls".standardizePath;
 (Document.dir +/+ "4444.scd").load;
 (Document.dir +/+ "kls_synthdefs/*.scd").loadPaths;
 ~init4444.value();
