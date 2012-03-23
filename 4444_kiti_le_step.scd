@@ -2,10 +2,10 @@
 
 // Start the server
 s.latency_(0.4); s.options.memSize = 8192 * 4; s.boot;
-// Load the scripts (CHANGE THIS PATH TO wherever yours are)
-Document.dir = Document.current.dir ? "~/dev/4444kls".standardizePath;
-(Document.dir +/+ "4444.scd").load;
-(Document.dir +/+ "kls_synthdefs/*.scd").loadPaths;
+// Load the scripts (you may need to CHANGE THIS PATH TO wherever yours are)
+~mainfolder = if(Document.current.notNil){Document.current.dir}{nil} ? "~/dev/4444kls".standardizePath;
+(~mainfolder +/+ "4444.scd").load;
+(~mainfolder +/+ "kls_synthdefs/*.scd").loadPaths;
 ~init4444.value();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +15,7 @@ TempoClock.default.tempo = 70/60;
 ~a4444[\filters].remove(\eko4444); // no use for dubstep. might be nice to add some more decent effects
 
 // Load these pattern scriptfiles, AFTER the setup:
-(Document.dir +/+ "kls_patterns/*.scd").loadPaths;
+(~mainfolder +/+ "kls_patterns/*.scd").loadPaths;
 
 "ok"
 );
