@@ -3,7 +3,7 @@
 // Start the server
 s.latency_(0.4); s.options.memSize = 8192 * 4; s.boot;
 // Load the scripts (you may need to CHANGE THIS PATH TO wherever yours are)
-~mainfolder = if(Document.current.notNil){Document.current.dir}{nil} ? "~/dev/4444kls".standardizePath;
+~mainfolder = (if(Document.current.notNil){Document.current.dir}{nil} ? "~/dev/4444kls").standardizePath.resolveRelative;
 (~mainfolder +/+ "4444.scd").load;
 (~mainfolder +/+ "kls_synthdefs/*.scd").loadPaths;
 ~init4444.value();
